@@ -28,27 +28,12 @@
         android:icon="@drawable/ic_timer"
         android:label="@string/app_name" >
 
-        <activity
-            android:name="com.google.android.glass.sample.timer.MenuActivity"
+        <activity android:name="com.briangriffey.glass.example.CardActivity"
             android:label="@string/app_name"
-            android:theme="@style/MenuTheme"
-            android:enabled="true" >
-        </activity>
-
-        <activity
-            android:name="com.google.android.glass.sample.timer.SetTimerActivity"
-            android:label="@string/app_name"
-            android:enabled="true" >
-        </activity>
-
-        <activity
-            android:name="com.google.android.glass.sample.timer.SelectValueActivity"
-            android:label="@string/app_name"
-            android:enabled="true" >
-        </activity>
+            android:enabled="true" />
 
         <service
-            android:name="com.google.android.glass.sample.timer.TimerService"
+            android:name="com.briangriffey.glass.example.LaunchActivityService"
             android:icon="@drawable/ic_timer"
             android:label="@string/app_name"
             android:enabled="true"
