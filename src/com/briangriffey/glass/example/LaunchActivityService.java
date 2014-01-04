@@ -14,6 +14,7 @@ public class LaunchActivityService extends Service {
 
 
         Intent launchActivityIntent = new Intent(this, CardActivity.class);
+        launchActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(launchActivityIntent);
 
         return START_STICKY;
