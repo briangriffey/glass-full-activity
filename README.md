@@ -1,30 +1,6 @@
-Timer
+Example glass app
 =====
 
-This sample inserts a live card to the left of the Glass clock that displays a
-timer. Tapping the live card presents a menu with options that are displayed
-according to the state of the timer:
+This sample shows the basic ways to interact with google glass. This sample includes an Activity and a Service. The activity will create a scroll view with cards, as well as insert cards into the timeline. The service will create a LiveCard that can be updated from the background using that service
 
-- Set timer: set the time for the timer
-- Start: start the timer
-- Pause: pause the timer
-- Resume: resume the timer
-- Reset: reset the timer
-- Change timer: change the time of the timer
-- Stop: remove the timer from the timeline
 
-## Getting started
-
-Check out our documentation to learn how to get started on
-https://developers.google.com/glass/develop/gdk
-
-## Running the sample on Glass
-
-You can use your IDE to compile and install the sample or use
-[`adb`](https://developer.android.com/tools/help/adb.html)
-on the command line:
-
-    $ adb install -r TimerSample.apk
-
-To start the sample, say "ok glass, start a timer" from the Glass clock
-screen or use the touch menu.
