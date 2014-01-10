@@ -33,14 +33,9 @@
             android:enabled="true"
             android:theme="@android:style/Theme.DeviceDefault">
 
-            <intent-filter>
-                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
-            </intent-filter>
-            <meta-data
-                android:name="com.google.android.glass.VoiceTrigger"
-                android:resource="@xml/voice_trigger_start" />
 
-            </activity>
+
+        </activity>
 
         <service
             android:name="com.briangriffey.glass.example.LaunchActivityService"
@@ -48,6 +43,16 @@
             android:label="@string/app_name"
             android:enabled="true"
             android:exported="true">
+
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/voice_trigger_start" />
+
+
 
         </service>
 

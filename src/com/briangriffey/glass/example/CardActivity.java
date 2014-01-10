@@ -2,10 +2,13 @@ package com.briangriffey.glass.example;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.google.android.glass.app.Card;
+import com.google.android.glass.timeline.TimelineManager;
 import com.google.android.glass.widget.CardScrollAdapter;
 import com.google.android.glass.widget.CardScrollView;
 
@@ -14,48 +17,65 @@ import com.google.android.glass.widget.CardScrollView;
  */
 public class CardActivity extends Activity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        CardScrollView scrollView = new CardScrollView(this);
-        scrollView.setAdapter(new SpecialCardAdapter());
-        scrollView.activate();
+        CardScrollView view = new CardScrollView(this);
+        view.activate();
 
-        setContentView(scrollView);
+        view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                CardActivity.this.openOptionsMenu();
+            }
+        });
+
+        view.setAdapter(new CardExampleAdapter());
+
+        setContentView(view);
+
+        TimelineManager manager = TimelineManager.from(this);
+        Card card = new Card(this);
+        card.setText("Awesome");
+        manager.insert(card);
+
     }
 
-    private class SpecialCardAdapter extends CardScrollAdapter {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    public class CardExampleAdapter extends CardScrollAdapter {
 
         @Override
         public int getCount() {
-            return 2;
+            return 5;
         }
 
         @Override
         public Object getItem(int i) {
-            return new Integer(i);
+            return null;
         }
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-
-            // Create a card with some simple text and a footer.
-            Card card1 = new Card(CardActivity.this);
-            card1.setText("This is card " + i);
-            return card1.toView();
-
+            Card card = new Card(CardActivity.this);
+            card.setText("" + i);
+            return card.toView();
         }
 
         @Override
         public int findIdPosition(Object o) {
-            return (Integer)o;
+            return 0;
         }
 
         @Override
         public int findItemPosition(Object o) {
-            return (Integer)o;
+            return 0;
         }
     }
+
 }
